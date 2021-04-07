@@ -1,4 +1,4 @@
-# Photon-Plant-Danger-Detector
+# House plant Temperature/Brightness Detector that alerts you during signficant events
 This program accepts a baseline temperature-brightness when you push the button. Then signals to you with LED's as conditions change
 
 Hit the button to set a baseline (Blue LED will flash as confirmation).
