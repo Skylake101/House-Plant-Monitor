@@ -1,6 +1,16 @@
 /*
  * Author: Luke Carlson
- * Temperature and Light Module Testing
+ * Project: Plant Babysitter
+ * Purpose: Temperature and Light Module Testing
+ *
+ *
+ * When the program starts, it saves the current temp and brightness. These are it's baseline values
+ * When the button is pressed, the led flashes 5 times to accept a new baseline temp.
+ *
+ * The brightness of the red LED is determined by temp (specifically, the current temp and baseline temp)
+ * It will hit 100% brightness if there is more than 2* differences
+ *
+ * The yellow LED will hit 75% brightness when the light sensors detects 50% or less than its baseline brightness
  */
  
 double temperatureC = 0.0;
@@ -14,7 +24,6 @@ int yellowLED = D0;
 int redLED = D1;
 int internalLED = D7;
 int switchy = D2;
-//====================================
 
 //1.A: Find the variable of tempature
 void flashLED(int pin, int time){
@@ -48,9 +57,9 @@ void loop() {
     temperatureC = gatherTemperature();       //prints temp
     brightC = gatherBrightness();
     //Serial.printlnf("Temperature: %.2f", temperatureC);
-    //======================================================================
+
     //1.B Find brightness
-    //======================================================================
+
     //2. On switch press --> BV = CV AND LED flash 5 times
     if(digitalRead(switchy) == LOW) { //When switch is pressed
         baseTemp = gatherTemperature();
@@ -59,7 +68,7 @@ void loop() {
           flashLED(internalLED, 1000);
           }
       }
-    //======================================================================
+
 //if statement for redLED
     if(temperatureC - baseTemp > 2) {
       analogWrite(redLED, 255);
