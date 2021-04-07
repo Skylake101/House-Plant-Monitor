@@ -3,7 +3,6 @@
  * Project: Plant Babysitter
  * Purpose: Temperature and Light Module Testing
  *
- *
  * When the program starts, it saves the current temp and brightness. These are it's baseline values
  * When the button is pressed, the led flashes 5 times to accept a new baseline temp.
  *
